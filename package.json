@@ -1,0 +1,21 @@
+{
+  "name": "dynamic-widget",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/main.js",
+  "scripts": {
+    "build": "brizy-scripts build",
+    "start": "brizy-scripts start",
+    "tsc": "tsc"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@brizy/core": "^1.0.10"
+  },
+  "devDependencies": {
+    "@brizy/scripts": "^1.1.2",
+    "@types/react": "^19.1.2",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3"
+  }
+}

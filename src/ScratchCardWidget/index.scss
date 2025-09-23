@@ -1,0 +1,31 @@
+
+.scratch-card-main-component {
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+  margin: 20px auto;
+  background: #fff;
+  border-radius: 10px;
+  width: 300px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.preview-card {
+  padding: 20px;
+}
+
+.scratch-placeholder {
+  background-color: #f86565;
+  padding: 40px;
+  border-radius: 10px;
+  font-size: 18px;
+  color: white;
+  font-weight: bold;
+}
+
+.result-card {
+  padding: 40px;
+  font-size: 18px;
+  font-weight: bold;
+  background: #fff8dc;
+  border-radius: 10px;
+}
