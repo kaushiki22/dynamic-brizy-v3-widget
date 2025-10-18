@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+(() => {
   const counter = document.querySelector(".custom-counter");
 
   if (counter) {
@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-});
 
-export {};
+})();
+
+export { };

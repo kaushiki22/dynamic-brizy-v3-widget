@@ -1,4 +1,38 @@
 export interface Props {
   spinItems?: Array<{ id: string }>;
+  settingsTabs?: string;
+  "Wheel-pointer-size"?: "small" | "medium" | "large";
+  "pointer-position"?: "top" | "bottom" | "left" | "right";
+  "default-bg-color"?: string;
+  "default-pointer-color"?: string;
+  "default-border-color"?: string;
+  "default-spin-btn-color"?: string;
+  "default-spin-btn-text"?: string;
+  "default-spin-btn-text-color"?: string;
+  "default-spin-btn-fontSize"?: number;
+  "spin-wheel-box-is-form"?: "on" | "off";
+  "winning-text1-title"?: string;
+  "winning-text1-color"?: string;
+  "winning-text1-fontSize"?: number;
+  "winning-text2-title"?: string;
+  "winning-text2-color"?: string;
+  "winning-text2-fontSize"?: number;
+  "winning-coupon-bg-color"?: string;
+  "winning-coupon-color"?: string;
+  "winning-coupon-fontSize"?: number;
+  "winning-button-color"?: string;
+  "winning-button-text-color"?: string;
+  "winning-button-text"?: string;
+  "winning-button-fontSize"?: number;
+  "losing-text1-title"?: string;
+  "losing-text1-color"?: string;
+  "losing-text1-fontSize"?: number;
+  "losing-text2-title"?: string;
+  "losing-text2-color"?: string;
+  "losing-text2-fontSize"?: number;
+  "losing-button-color"?: string;
+  "losing-button-text-color"?: string;
+  "losing-button-text"?: string;
+  "losing-button-fontSize"?: number;
   [key: string]: unknown;
 }

@@ -1,9 +1,4 @@
-.spin-wheel-container {
-  text-align: center;
-  font-family: Arial, sans-serif;
-  padding: 2rem;
-  border-radius: 1rem;
-}
+
 
 .spin-wheel-title {
   font-size: 1.5rem;
@@ -19,9 +14,9 @@
 
 .spin-wheel {
   position: relative;
-  width: min(80vw, 400px); /* responsive sizing */
-  aspect-ratio: 1 / 1;     /* keep circle shape */
-  border-radius: 50%;
+  width: 16rem;
+  height: 16rem;
+  margin: 0 auto;
 }
 
 .wheel {
@@ -100,7 +95,7 @@
   margin-top: 1rem;
   font-size: 1.2rem;
   font-weight: bold;
-  color: red;
+  color: #10b981;
 }
 .result:empty {
   margin-top: 0;
