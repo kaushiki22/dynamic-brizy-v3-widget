@@ -14,7 +14,7 @@ interface Data {
 
 export function getItems(props: Props): Array<Data> {
   const items = props.spinItems || [];
-  return items.map((item) => {
+  return items.map((item,index) => {
     const groupId = item.id;
     const titleKey = camelCase(["spinItems", groupId, "title"]);
     const scoreKey = camelCase(["spinItems", groupId, "score"]);
@@ -35,11 +35,11 @@ export function getItems(props: Props): Array<Data> {
     }
 
     return {
-      title: String(props[titleKey] ?? ""),
+      title: String(props[titleKey] ?? `label ${index + 1}`),
       score: typeof props[scoreKey] === "number" ? props[scoreKey] : 0,
       fontSize: typeof props[fontSizeKey] === "number" ? props[fontSizeKey] : 16,
       fontColor: String(props[fontColorKey] ?? "#000"),
-      sectorColor: String(props[sectorColorKey] ?? "#fff"),
+      sectorColor: !props[sectorColorKey] ? index % 2 === 0 ? "#93c5fd" : "#fcd34d" : String(props[sectorColorKey]),
       couponCode: String(props[couponCodeKey] ?? ""),
       image: imageSrc,
       loseOption: String(props[looseOptionKey] ?? ""),

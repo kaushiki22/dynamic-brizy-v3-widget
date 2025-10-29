@@ -40,11 +40,11 @@ export function getSpinScreenPaddingStyle(config: PaddingConfig, screenName: Str
 
 type BorderWidthConfig = Record<string, any>;
 
-export function getSpinScreenBorderWidthStyle(config: BorderWidthConfig, screenName: String, borderColorName: String) {
+export function getSpinScreenBorderWidthStyle(config: BorderWidthConfig, screenName: String, borderColorName: String, borderType?: string) {
     const type = config[`${screenName}-widthType`];
 
     const borderStyle: Record<string, string> = {
-        borderStyle: "solid",
+        borderStyle: config[`${borderType}`] || "solid",
         borderColor: config[`${borderColorName}`] || "transparent" // default to transparent instead of red
     };
 

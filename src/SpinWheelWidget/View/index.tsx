@@ -26,6 +26,7 @@ export const View = (props: Props): React.ReactElement => {
   const radialVal = radicalDistanse[pointerSizeKey] || 0.6;
   return (
     <div 
+      id="spinWheelContainer"
       className="spin-wheel-container" 
       data-pointer-position={pointerPositionKey}
       data-spin-wheel-box-is-form={props?.['spin-wheel-box-is-form'] || 'off'}
@@ -57,7 +58,7 @@ export const View = (props: Props): React.ReactElement => {
       data-winning-text2-border={Object.entries(getSpinScreenBorderWidthStyle(props ?? {}, 'winning-text2-border', 'winning-text2-bordercolor')).map(([key, value]) => `${key.replace(/([A-Z])/g, '-$1').toLowerCase()}: ${value}`).join('; ')}
       data-winning-coupon-box-margin={Object.entries(getSpinScreenMarginStyle(props ?? {}, 'winning-coupon-box')).map(([key, value]) => `${key.replace(/([A-Z])/g, '-$1').toLowerCase()}: ${value}`).join('; ')}
       data-winning-coupon-box-padding={Object.entries(getSpinScreenPaddingStyle(props ?? {}, 'winning-coupon-box')).map(([key, value]) => `${key.replace(/([A-Z])/g, '-$1').toLowerCase()}: ${value}`).join('; ')}
-      data-winning-coupon-box-border={Object.entries(getSpinScreenBorderWidthStyle(props ?? {}, 'winning-coupon-box-border', 'winning-coupon-box-border-color')).map(([key, value]) => `${key.replace(/([A-Z])/g, '-$1').toLowerCase()}: ${value}`).join('; ')}
+      data-winning-coupon-box-border={Object.entries(getSpinScreenBorderWidthStyle(props ?? {}, 'winning-coupon-box-border', 'winning-coupon-box-border-color', 'winning-couponbox-type')).map(([key, value]) => `${key.replace(/([A-Z])/g, '-$1').toLowerCase()}: ${value}`).join('; ')}
       data-winning-coupon-box-border-radius={Object.entries(getSpinScreenBorderRadiusStyle(props ?? {}, 'winning-coupon-box-border-radius')).map(([key, value]) => `${key.replace(/([A-Z])/g, '-$1').toLowerCase()}: ${value}`).join('; ')}
       data-winning-text1-border-radius={Object.entries(getSpinScreenBorderRadiusStyle(props ?? {}, 'winning-text1-border-radius')).map(([key, value]) => `${key.replace(/([A-Z])/g, '-$1').toLowerCase()}: ${value}`).join('; ')}
       data-winning-text2-border-radius={Object.entries(getSpinScreenBorderRadiusStyle(props ?? {}, 'winning-text2-border-radius')).map(([key, value]) => `${key.replace(/([A-Z])/g, '-$1').toLowerCase()}: ${value}`).join('; ')}

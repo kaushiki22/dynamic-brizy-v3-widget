@@ -12,7 +12,7 @@ export const LosingScreen = (props: Props): ReactElement => {
             padding: '15px 10px', // More vertical padding to balance the layout
             borderRadius: '12px',
             textAlign: 'center',
-            width: '320px',
+            width: '270px',
             boxShadow: '0 10px 25px rgba(0,0,0,0.1)',
             margin: '0px', // Center the component for demonstration
             fontFamily: 'Arial, sans-serif',

@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import { Button } from "../Button";
 import { Props } from "./types";
 import { getSpinScreenMarginStyle, getSpinScreenPaddingStyle, getSpinScreenBorderWidthStyle } from '../../utils/BoxModalUtils'
-import { wheelSize, wheelPointerConfig, radicalDistanse } from '../../constant/spinWheelConstant'
+import { wheelSize, wheelPointerConfig, EditorRadicalDistanse } from '../../constant/spinWheelConstant'
 
 export const Items = (props: Props): React.ReactElement => {
   const { items, spinning, onSpinStart, style, extraProps  } = props;
@@ -80,7 +80,7 @@ export const Items = (props: Props): React.ReactElement => {
 
             const fontSize = item.fontSize || 14;
             const pointerSize = extraProps && typeof extraProps["Wheel-pointer-size"] === "string" ? extraProps["Wheel-pointer-size"] : "medium";
-            const radialVal = radicalDistanse[pointerSize] || 0.6;
+            const radialVal = EditorRadicalDistanse[pointerSize] || 0.6;
             const distanceFromCenter = radius * radialVal; // radial multiplier for symmetry
             const imageSize = radius / 4;
             return (

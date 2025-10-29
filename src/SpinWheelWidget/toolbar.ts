@@ -365,26 +365,31 @@ export const getToolbar: GetToolbar = ({ t }) => {
                                     { value: "large", icon: "nc-large" },
                                   ]
                                 },
-                                // {
-                                //   id: "winning-couponbox-type",
-                                //   type: "select",
-                                //   label: "Box type",
-                                //   default: { value: 'outlined' },
-                                //   choices: [
-                                //     {
-                                //       value: "filled",
-                                //       title: "Filled"
-                                //     },
-                                //     {
-                                //       value: "outlined",
-                                //       title: "Outlined"
-                                //     },
-                                //     {
-                                //       value: "text",
-                                //       title: "Text"
-                                //     }
-                                //   ]
-                                // },
+                                {
+                                  id: "winning-couponbox-type",
+                                  type: "select",
+                                  label: "Box type",
+                                  default: { value: 'solid' },
+                                  choices: [
+                                    {
+                                      value: "dashed",
+                                      title: "Dashed"
+                                    },
+                                    {
+                                      value: "solid",
+                                      title: "Solid"
+                                    },
+                                    {
+                                      value: "dotted",
+                                      title: "Dotted"
+                                    },
+                                    {
+                                      value: "double",
+                                      title: "Double"
+                                    },
+                                    
+                                  ]
+                                },
                                 {
                                   id: "winning-coupon-box-fontsize",
                                   type: "number",

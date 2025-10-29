@@ -14,7 +14,7 @@ export const Won = (props: Props): ReactElement => {
       padding: '15px 10px',
       borderRadius: '12px',
       textAlign: 'center',
-      width: '320px',
+      width: '270px',
       boxShadow: '0 10px 25px rgba(0,0,0,0.1)',
       fontFamily: 'Arial, sans-serif',
       display: 'flex',
@@ -35,7 +35,7 @@ export const Won = (props: Props): ReactElement => {
             height: '80px',
             ...getSpinScreenMarginStyle(extraProps ?? {}, 'winning-img'),
             ...getSpinScreenPaddingStyle(extraProps ?? {}, 'winning-img'),
-            ...getSpinScreenBorderWidthStyle(extraProps ?? {}, 'winning-img-border', 'winning-img-border-color'),
+            ...getSpinScreenBorderWidthStyle(extraProps ?? {}, 'winning-img-border', 'winning-img-border-color', ''),
           }}
         />
         <p style={{
@@ -80,7 +80,7 @@ export const Won = (props: Props): ReactElement => {
         ],
         ...getSpinScreenMarginStyle(extraProps ?? {}, 'winning-coupon-box'),
         ...getSpinScreenPaddingStyle(extraProps ?? {}, 'winning-coupon-box'),
-        ...getSpinScreenBorderWidthStyle(extraProps ?? {}, 'winning-coupon-box-border', 'winning-coupon-box-border-color'),
+        ...getSpinScreenBorderWidthStyle(extraProps ?? {}, 'winning-coupon-box-border', 'winning-coupon-box-border-color', 'winning-couponbox-type'),
         ...getSpinScreenBorderRadiusStyle(extraProps ?? {}, 'winning-coupon-box-border-radius')
       }}
         onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#E6D4F7'}

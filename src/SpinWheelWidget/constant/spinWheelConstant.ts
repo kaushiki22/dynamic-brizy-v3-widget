@@ -1,5 +1,6 @@
 export const wheelSize = { small: "250px", medium: "350px", large: "400px" };
 export const radicalDistanse = { small: 0.59, medium: 0.6, large: 0.65 }
+export const EditorRadicalDistanse = { small: 0.5, medium: 0.6, large: 0.65 }
 export const wheelPointerConfig = {
     small: {
         size: "20px",

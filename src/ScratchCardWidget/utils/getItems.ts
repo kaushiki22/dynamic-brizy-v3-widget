@@ -1,20 +1,21 @@
 import { camelCase } from "./string";
+import { Data, Types } from "../types";
 
-export function getItems(props: {couponItem ?: { id: string }[] } & Record<string, any>){
-    const items = props.couponItem || [];
-
-  return items.map(({ id: groupId }: { id: string }) => {
-      const couponTitleKey = camelCase(["couponItem", groupId, "Coupon name"]);
-    const couponWeightKey = camelCase(["couponItem", groupId, "Coupon weight"]);
-    const couponWinKey = camelCase(["couponItem", groupId, "Coupon win"]);
-      const couponName = props[couponTitleKey];
-    const couponWeight = props[couponWeightKey];
-    const couponWin = props[couponWinKey];
+export function getItems(props: Types): Array<Data> {
+  const items = props.scratchCardItems || [];
+  return items.map((item: any) => {
+    const groupId = item.id;
+    const titleKey = camelCase(["scratchCardItems", groupId, "title"]);
+    const couponCodeKey = camelCase(["scratchCardItems", groupId, "couponCode"]);
+    const loseOptionKey = camelCase(["scratchCardItems", groupId, "LooseOption"]);
+    const scoreKey = camelCase(["scratchCardItems", groupId, "score"]);
 
     return {
-        couponName: `${couponName}`,
-        couponWeight: typeof couponWeight === "number" ? couponWeight : 0,
-        couponWin: `${couponWin || 'yes'}`,
+      id: groupId,
+      title: String(props[titleKey] ?? ""),
+      couponCode: String(props[couponCodeKey] ?? ""),
+      loseOption: String(props[loseOptionKey] ?? ""),
+      score: typeof props[scoreKey] === "number" ? props[scoreKey] : 0,
     };
   });
 }
