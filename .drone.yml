@@ -1,0 +1,42 @@
+---
+clone:
+  git:
+    image: plugins/git
+    commands:
+      - git init
+      - git remote add origin ${DRONE_REMOTE_URL}
+      - git fetch origin
+      - git checkout ${DRONE_COMMIT_SHA}
+
+pipeline:
+  download:
+    image: docker
+    commands:
+      - docker pull 612427630422.dkr.ecr.us-east-1.amazonaws.com/sre/mfe-builder-deployer:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /home/ec2-user/.docker:/root/.docker
+
+
+  build-creation:
+      image: 612427630422.dkr.ecr.us-east-1.amazonaws.com/sre/mfe-builder-deployer:latest
+      when:
+        event: tag
+      commands:
+        - bash /build.sh
+
+  deployment:
+      image: 612427630422.dkr.ecr.us-east-1.amazonaws.com/sre/mfe-builder-deployer:latest
+      when:
+        event: push
+        branch: master
+      commands:
+        - python3 /deploy.py
+  
+  lint-test-fe-check:
+      image: 612427630422.dkr.ecr.us-east-1.amazonaws.com/sre/mfe-builder-deployer:latest
+      when:
+        event: pull_request
+        branch: [master, dev]
+      commands:
+        - bash ./ci-utils/validations.sh
