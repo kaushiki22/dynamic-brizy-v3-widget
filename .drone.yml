@@ -10,28 +10,21 @@ clone:
 
 pipeline:
   download:
-    image: docker
+    image: docker:20.10
     commands:
       - docker pull 612427630422.dkr.ecr.us-east-1.amazonaws.com/sre/mfe-builder-deployer:latest
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /home/ec2-user/.docker:/root/.docker
 
-
   build-creation:
       image: 612427630422.dkr.ecr.us-east-1.amazonaws.com/sre/mfe-builder-deployer:latest
       when:
-        event: tag
+        event: [pull_request]
       commands:
-        - bash /build.sh
-
-  deployment:
-      image: 612427630422.dkr.ecr.us-east-1.amazonaws.com/sre/mfe-builder-deployer:latest
-      when:
-        event: push
-        branch: master
-      commands:
-        - python3 /deploy.py
+        - cp -r ./ci-utils/cdn-deployment.py ./
+        - cp -r /base.py ./
+        - python cdn-deployment.py
   
   lint-test-fe-check:
       image: 612427630422.dkr.ecr.us-east-1.amazonaws.com/sre/mfe-builder-deployer:latest
