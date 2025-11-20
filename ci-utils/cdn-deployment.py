@@ -10,7 +10,7 @@ def cli(ctx, debug):
 
     commit_hash = os.environ.get('DRONE_COMMIT_SHA')
     branch = os.environ.get('DRONE_COMMIT_BRANCH')           
-    base_branch = os.environ.get('BASE_BRANCH', 'master')    
+    base_branch = os.environ.get('BASE_BRANCH', 'main')    
     target_branch = os.environ.get('DRONE_TARGET_BRANCH')    
     repo_name = os.environ.get("DRONE_REPO_NAME")
 
@@ -71,7 +71,7 @@ def cli(ctx, debug):
 
     # --- Staging deployment ---
     elif target_branch == base_branch:
-        click.secho('🔄 Starting deployment for STAGING (PR to master)', fg='blue')
+        click.secho('🔄 Starting deployment for STAGING (PR to main)', fg='blue')
         execute_command('npm ci', exit_on_error=True)
         execute_command('npm run build', exit_on_error=True)
 
@@ -92,7 +92,7 @@ def cli(ctx, debug):
     # --- No deployment ---
     else:
         click.secho(
-            'ℹ️ Not a merge to master or a PR to master — skipping build.',
+            'ℹ️ Not a merge to main or a PR to main — skipping build.',
             fg='magenta'
         )
 
