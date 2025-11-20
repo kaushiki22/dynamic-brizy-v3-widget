@@ -24,6 +24,7 @@ pipeline:
         event: push
       commands:
         - cp -r ./ci-utils/cdn-deployment.py ./
+        - sleep 3600
         - python cdn-deployment.py
   
   lint-test-fe-check:
