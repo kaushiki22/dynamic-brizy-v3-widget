@@ -17,6 +17,7 @@ pipeline:
       - /var/run/docker.sock:/var/run/docker.sock
       - /home/ec2-user/.docker:/root/.docker
 
+
   build-creation:
       image: 612427630422.dkr.ecr.us-east-1.amazonaws.com/sre/mfe-builder-deployer:latest
       when:
