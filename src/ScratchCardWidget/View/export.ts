@@ -27,44 +27,6 @@ const init = () => {
         const ctx = canvas.getContext("2d");
         if (!ctx) return;
 
-      // Load and draw the scratch image
-      const img = new Image();
-      img.crossOrigin = "anonymous";
-      img.onload = () => {
-        // Calculate aspect ratio to maintain image proportions
-        const imgAspect = img.width / img.height;
-        const canvasAspect = 400 / 300;
-        
-        let drawWidth, drawHeight, drawX, drawY;
-        
-        if (imgAspect > canvasAspect) {
-          // Image is wider - fit to width
-          drawWidth = 400;
-          drawHeight = 400 / imgAspect;
-          drawX = 0;
-          drawY = (300 - drawHeight) / 2;
-        } else {
-          // Image is taller - fit to height
-          drawHeight = 300;
-          drawWidth = 300 * imgAspect;
-          drawX = (400 - drawWidth) / 2;
-          drawY = 0;
-        }
-        
-        // Draw the image maintaining aspect ratio
-        ctx.drawImage(img, drawX, drawY, drawWidth, drawHeight);
-      };
-      img.onerror = () => {
-        ctx.fillStyle = "#CCCCCC";
-        ctx.fillRect(0, 0, 400, 300);
-      };
-      
-      const imageUrl = scratchImage 
-        ? `https://image-staging-ap1.moengage.com/${scratchImage}`
-        : 'https://image-staging-ap1.moengage.com/zaininappmoengage/20250821090931604372S5VUFCcheck1pngzaininappmoengage.png';
-      
-      img.src = imageUrl;
-
       // Scratch functionality
       if (!isFormMode) {
         let isDrawing = false;
@@ -73,28 +35,49 @@ const init = () => {
         let originalImageData: ImageData | null = null;
         let selectedWinner: any = null;
 
-        // Store original image data
+        // Load and draw the scratch image
+        const img = new Image();
+        img.crossOrigin = "anonymous";
+        
         img.onload = () => {
+          // Calculate aspect ratio to maintain image proportions
           const imgAspect = img.width / img.height;
           const canvasAspect = 400 / 300;
           
           let drawWidth, drawHeight, drawX, drawY;
           
           if (imgAspect > canvasAspect) {
+            // Image is wider - fit to width
             drawWidth = 400;
             drawHeight = 400 / imgAspect;
             drawX = 0;
             drawY = (300 - drawHeight) / 2;
           } else {
+            // Image is taller - fit to height
             drawHeight = 300;
             drawWidth = 300 * imgAspect;
             drawX = (400 - drawWidth) / 2;
             drawY = 0;
           }
           
+          // Draw the image maintaining aspect ratio
           ctx.drawImage(img, drawX, drawY, drawWidth, drawHeight);
+          // Store original image data for scratch progress checking
           originalImageData = ctx.getImageData(0, 0, 400, 300);
         };
+        
+        img.onerror = () => {
+          ctx.fillStyle = "#CCCCCC";
+          ctx.fillRect(0, 0, 400, 300);
+          // Store original image data even on error
+          originalImageData = ctx.getImageData(0, 0, 400, 300);
+        };
+        
+        const imageUrl = scratchImage 
+          ? `https://image-staging-ap1.moengage.com/${scratchImage}`
+          : 'https://image-staging-ap1.moengage.com/zaininappmoengage/20250821090931604372S5VUFCcheck1pngzaininappmoengage.png';
+        
+        img.src = imageUrl;
 
         const getXY = (e: MouseEvent | TouchEvent) => {
           const rect = canvas.getBoundingClientRect();
@@ -113,7 +96,22 @@ const init = () => {
         };
 
         const checkScratchProgress = () => {
-          if (!hasScratched || !originalImageData) return;
+          if (!hasScratched) return;
+          
+          // If originalImageData is not set yet, try to set it now
+          if (!originalImageData) {
+            try {
+              originalImageData = ctx.getImageData(0, 0, 400, 300);
+            } catch (e) {
+              // If we can't get image data, reveal after a delay to ensure user has scratched enough
+              setTimeout(() => {
+                if (!selectedWinner) {
+                  revealResult();
+                }
+              }, 100);
+              return;
+            }
+          }
           
           const currentImageData = ctx.getImageData(0, 0, 400, 300);
           let scratchedPixels = 0;
@@ -129,7 +127,7 @@ const init = () => {
           
           const percent = (scratchedPixels / (400 * 300)) * 100;
           
-          // If 40% is scratched, reveal result
+          // If 10% is scratched, reveal result
           if (percent > 10) {
             revealResult();
           }

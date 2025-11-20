@@ -6,82 +6,105 @@ export const getToolbar: GetToolbar = ({ t }) => {
   return [
     {
       selector: ".spin-wheel-container",
-      toolbar: [
-        {
-              id: "button",
-              type: "advancedSettings",
-              icon: "nc-counter-outline",
-        },
-        {
-          id: "toolbarCurrentElement",
-          type: "popover",
-          config: {
-            icon: "nc-counter-outline",
-            title: "Spin",
-          },
-          devices: "desktop", // only desktop
-          position: 90,
-          options: [
-            {
-              id: "spinItems",
-              type: "addable",
-              config: {
-                title: "Spin",
-                showCount: true,
-              },
-              shape: [
-                {
-                  id: "score",
-                  label: t("Set win %"),
-                  type: "number",
-                  default: 0
-                },
-                {
-                  id: "title",
-                  label: t("Title"),
-                  type: "inputText",
-                  default: ""
-                },
-                {
-                  id: "fontSize",
-                  label: t("Font size"),
-                  type: "number",
-                  default: 14
-                },
-                {
-                  id: "fontColor",
-                  label: t("Font color"),
-                  type: "inputText",
-                  default: "#FFFFFF"
-                },
-                {
-                  id: "sectorColor",
-                  label: t("Sector color"),
-                  type: "inputText",
-                  default: "#FFFFFF"
-                },
-                {
-                  id: "couponCode",
-                  label: t("Coupon code"),
-                  type: "inputText",
-                  default: ""
-                },
-                {
-                  id: "uploadImage",
-                  label: t("Upload image"),
-                  type: "imageUpload",
-                  default: { src: "", fileName: "" }
-                },
-                {
-                  id: 'looseOption',
-                  label: t('Loose option'),
-                  type: 'switch',
-                }
-              ],
+       toolbar: [
+          {
+            id: "toolbarCurrentElement",
+            type: "popover",
+            config: {
+              icon: "nc-uncheck",
+              title: "Spin",
             },
-          ],
-        }
-      ],
+            options: [
+              {
+                id: "grid-control",
+                type: "grid",
+                columns: [
+                  {
+                    id: "grid-settings",
+                    size: 1,
+                    options: [
+                      {
+                        id: "button",
+                        type: "sidebarTabsButton",
+                        config: {
+                          icon: "nc-settings",
+                          text: "Settings",
+                        },
+                      },
+                    ],
+                  },
+                  {
+                    id: "grid-sectors",
+                    size: 1,
+                    options: [
+                      {
+                        id: "spinItems",
+                        type: "addable",
+                        config: {
+                          title: "Sectors",
+                          showCount: false,
+                          extraLabel: `items`,
+                        },
+                        shape: [
+                          {
+                            id: "score",
+                            label: "Set win %",
+                            type: "number",
+                            default: 0,
+                          },
+                          {
+                            id: "title",
+                            label: "Title",
+                            type: "inputText",
+                            default: "",
+                          },
+                          {
+                            id: "fontSize",
+                            label: "Font size",
+                            type: "number",
+                            default: 14,
+                          },
+                          {
+                            id: "fontColor",
+                            label: "Font color",
+                            type: "inputText",
+                            default: "#FFFFFF",
+                          },
+                          {
+                            id: "sectorColor",
+                            label: "Sector color",
+                            type: "inputText",
+                            default: "#FFFFFF",
+                          },
+                          {
+                            id: "couponCode",
+                            label: "Coupon code",
+                            type: "inputText",
+                            default: "",
+                          },
+                          {
+                            id: "uploadImage",
+                            label: "Upload image",
+                            type: "imageUpload",
+                            default: {
+                              src: "",
+                              fileName: "",
+                            },
+                          },
+                          {
+                            id: "looseOption",
+                            label: "Loose option",
+                            type: "switch",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
       sidebar: [
         {
           id: "sidebarTabs",
@@ -99,7 +122,7 @@ export const getToolbar: GetToolbar = ({ t }) => {
                   default: {
                     value: "default"
                   },
-                  config: { saveTab : true},
+                  config: { saveTab: true },
                   tabs: [
                     {
                       id: "default",
@@ -109,7 +132,7 @@ export const getToolbar: GetToolbar = ({ t }) => {
                           id: "Wheel-pointer-size",
                           label: "Wheel pointer size",
                           type: "radioGroup",
-                          default: { value: 'medium'},
+                          default: { value: 'medium' },
                           choices: [
                             { value: "small", icon: "nc-small" },
                             { value: "medium", icon: "nc-medium" },
@@ -196,7 +219,8 @@ export const getToolbar: GetToolbar = ({ t }) => {
                             type: "grouped",
                             value: 30,
                             suffix: "px"
-                          }},
+                          }
+                        },
                         { id: "spin-screen-border-width", label: "Border width", type: "padding" }
                       ],
                     },
@@ -242,14 +266,14 @@ export const getToolbar: GetToolbar = ({ t }) => {
                                     {
                                       id: "text1",
                                       label: "Text1",
-          
+
                                       options: [
                                         {
                                           id: "winning-text1-title",
                                           type: "textarea",
                                           label: "Title",
                                           default: { value: "Congratulations, you won" },
-                                        },  
+                                        },
                                         {
                                           id: "winning-text1-fontsize",
                                           type: "number",
@@ -257,7 +281,7 @@ export const getToolbar: GetToolbar = ({ t }) => {
                                           default: {
                                             value: 16
                                           }
-                                        }, 
+                                        },
                                         {
                                           id: "winning-text1-fontcolor",
                                           type: "inputText",
@@ -265,7 +289,7 @@ export const getToolbar: GetToolbar = ({ t }) => {
                                           default: {
                                             value: "#1E1E1E"
                                           }
-                                        },                                        
+                                        },
                                         {
                                           id: "winning-text1-bg-color",
                                           type: "inputText",
@@ -281,7 +305,7 @@ export const getToolbar: GetToolbar = ({ t }) => {
                                             value: 10,
                                             suffix: "px"
                                           }
-                                         },
+                                        },
                                         { id: "winning-text1-padding", label: "Padding", type: "padding" },
                                         { id: "winning-text1-border-width", label: "Border width", type: "padding" },
                                         { id: "winning-text1-border-radius", label: "Border radius", type: "padding" },
@@ -309,7 +333,7 @@ export const getToolbar: GetToolbar = ({ t }) => {
                                           id: "winning-text2-fontsize",
                                           type: "number",
                                           label: "Font size",
-                                          default: {value:  12}
+                                          default: { value: 12 }
                                         },
                                         {
                                           id: "winning-text2-fontcolor",
@@ -332,7 +356,8 @@ export const getToolbar: GetToolbar = ({ t }) => {
                                             type: "grouped",
                                             value: 10,
                                             suffix: "px"
-                                          } },
+                                          }
+                                        },
                                         { id: "winning-text2-padding", label: "Padding", type: "padding" },
                                         { id: "winning-text2-border-width", label: "Border width", type: "padding" },
                                         { id: "winning-text2-border-radius", label: "Border radius", type: "padding" },
@@ -387,7 +412,7 @@ export const getToolbar: GetToolbar = ({ t }) => {
                                       value: "double",
                                       title: "Double"
                                     },
-                                    
+
                                   ]
                                 },
                                 {
@@ -452,7 +477,8 @@ export const getToolbar: GetToolbar = ({ t }) => {
                                     type: "grouped",
                                     value: 12,
                                     suffix: "px"
-                                  }                                },
+                                  }
+                                },
                                 {
                                   id: "winning-coupon-box-border-width", label: "Border width", type: "padding",
                                   default: {
@@ -467,7 +493,8 @@ export const getToolbar: GetToolbar = ({ t }) => {
                                     type: "grouped",
                                     value: 8,
                                     suffix: "px"
-                                  }                                },
+                                  }
+                                },
                                 {
                                   id: "winning-coupon-box-border-color",
                                   type: "inputText",
@@ -521,13 +548,13 @@ export const getToolbar: GetToolbar = ({ t }) => {
                                   id: "losing-text1-title",
                                   type: "textarea",
                                   label: "Title",
-                                  default: { value: "Sorry, You didn't win anything"}
+                                  default: { value: "Sorry, You didn't win anything" }
                                 },
                                 {
                                   id: "losing-text1-fontsize",
                                   type: "number",
                                   label: "Font size",
-                                  default: {value: 16}
+                                  default: { value: 16 }
                                 },
                                 {
                                   id: "losing-text1-fontcolor",
@@ -551,7 +578,8 @@ export const getToolbar: GetToolbar = ({ t }) => {
                                     type: "grouped",
                                     value: 10,
                                     suffix: "px"
-                                  } },
+                                  }
+                                },
                                 { id: "losing-text1-padding", label: "Padding", type: "padding" },
                                 { id: "losing-text1-border-width", label: "Border width", type: "padding" },
                                 { id: "losing-text1-border-radius", label: "Border radius", type: "padding" },

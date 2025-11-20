@@ -8,53 +8,74 @@ export const getToolbar: GetToolbar = ({ t }) => {
       selector: ".scratch-card-main-component",
       toolbar: [
         {
-          id: "button",
-          type: "advancedSettings",
-          icon: "nc-counter-outline",
-        },
-        {
           id: "toolbarCurrentElement",
           type: "popover",
           config: {
-            icon: "nc-counter-outline",
+            icon: "nc-styling-all",
             title: "Spin",
           },
           devices: "desktop", // only desktop
           position: 90,
           options: [
             {
-              id: "scratchCardItems",
-              type: "addable",
-              config: {
-                title: "Scratch card",
-                showCount: true,
-              },
-              shape: [
+              id: "grid-control",
+              type: "grid",
+              columns: [
                 {
-                  id: "score",
-                  label: t("Set win %"),
-                  type: "number",
-                  default: 0
+                  id: "grid-settings",
+                  size: 1,
+                  options: [
+                    {
+                      id: "button",
+                      type: "sidebarTabsButton",
+                      config: {
+                        icon: "nc-settings",
+                        text: "Settings"
+                      }
+                    }
+                  ]
                 },
                 {
-                  id: "title",
-                  label: t("Title"),
-                  type: "inputText",
-                  default: ""
-                },
-                {
-                  id: "couponCode",
-                  label: t("Coupon code"),
-                  type: "inputText",
-                  default: ""
-                },
-                {
-                  id: 'looseOption',
-                  label: t('Loose option'),
-                  type: 'switch',
+                  id: "grid-sectors",
+                  size: 1,
+                  options: [
+                    {
+                      id: "scratchCardItems",
+                      type: "addable",
+                      config: {
+                        title: "Scratch card",
+                        showCount: true,
+                      },
+                      shape: [
+                        {
+                          id: "score",
+                          label: t("Set win %"),
+                          type: "number",
+                          default: 0
+                        },
+                        {
+                          id: "title",
+                          label: t("Title"),
+                          type: "inputText",
+                          default: ""
+                        },
+                        {
+                          id: "couponCode",
+                          label: t("Coupon code"),
+                          type: "inputText",
+                          default: ""
+                        },
+                        {
+                          id: 'looseOption',
+                          label: t('Loose option'),
+                          type: 'switch',
+                        }
+                      ],
+                    }
+                  ]
                 }
-              ],
-            },
+              ]
+            }
           ],
         }
       ],

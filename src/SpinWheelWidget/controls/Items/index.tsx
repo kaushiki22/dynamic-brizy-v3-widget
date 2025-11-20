@@ -154,8 +154,8 @@ export const Items = (props: Props): React.ReactElement => {
         }}
       />
 
-      {/* Spin button */}
-      <Button onClick={onSpinStart} disabled={spinning} backgroundColor={typeof extraProps?.['default-spin-btn-color'] === 'string' ? extraProps['default-spin-btn-color'] : undefined}>
+        {/* Spin button */}
+        <Button onClick={onSpinStart} disabled={spinning} backgroundColor={typeof extraProps?.['default-spin-btn-color'] === 'string' ? extraProps['default-spin-btn-color'] : undefined} padding={extraProps?.['spin-wheel-box-is-form'] === 'on' ? '0.8rem 0.8rem' : '1.2rem 0.8rem'}>
           {spinning ? "Spinning..." : extraProps?.['spin-wheel-box-is-form'] === 'on' ? "" : (typeof extraProps?.['default-spin-btn-text'] === 'string' && extraProps['default-spin-btn-text'].trim() !== '' ? extraProps['default-spin-btn-text'] : "Spin")}
         </Button>
         </div>

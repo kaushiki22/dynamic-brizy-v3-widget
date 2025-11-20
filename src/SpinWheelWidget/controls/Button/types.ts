@@ -5,4 +5,5 @@ export interface Props {
   onClick?: () => void;
   disabled?: boolean;
   backgroundColor?: string;
+  padding?: string;
 }

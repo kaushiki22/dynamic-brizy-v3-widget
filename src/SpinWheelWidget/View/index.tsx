@@ -76,7 +76,7 @@ export const View = (props: Props): React.ReactElement => {
       data-losing-text1-border-radius={Object.entries(getSpinScreenBorderRadiusStyle(props ?? {}, 'losing-text1-border-radius')).map(([key, value]) => `${key.replace(/([A-Z])/g, '-$1').toLowerCase()}: ${value}`).join('; ')}
       style={{
         position: "relative",
-        backgroundColor: props?.['default-bg-color'] || '#f0f9ff',
+        backgroundColor: props?.['default-bg-color'] || 'transparent',
         padding: '2rem',
         borderRadius: '1rem',
         textAlign: 'center',
@@ -182,7 +182,7 @@ export const View = (props: Props): React.ReactElement => {
         <button 
           className="spin-button"
           style={{
-            padding: "0.8rem 1.5rem",
+            padding: `${props?.['spin-wheel-box-is-form'] === 'on' ? '0.8rem 0.8rem' : '1.2rem 0.8rem'}`,
             fontSize: "1rem",
             fontWeight: "bold",
             color: "#fff",
