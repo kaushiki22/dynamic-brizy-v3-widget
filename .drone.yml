@@ -23,21 +23,13 @@ pipeline:
       when:
         event: push
       commands:
-        - sleep 3600
-        - bash /build.sh
-
-  # deployment:
-  #     image: 612427630422.dkr.ecr.us-east-1.amazonaws.com/sre/mfe-builder-deployer:latest
-  #     when:
-  #       event: push
-  #       branch: master
-  #     commands:
-  #       - python3 /deploy.py
+        - cp -r ./ci-utils/cdn-deployment.py ./
+        - python cdn-deployment.py
   
-  # lint-test-fe-check:
-  #     image: 612427630422.dkr.ecr.us-east-1.amazonaws.com/sre/mfe-builder-deployer:latest
-  #     when:
-  #       event: pull_request
-  #       branch: [master, dev]
-  #     commands:
-  #       - bash ./ci-utils/validations.sh
+  lint-test-fe-check:
+      image: 612427630422.dkr.ecr.us-east-1.amazonaws.com/sre/mfe-builder-deployer:latest
+      when:
+        event: pull_request
+        branch: [master, dev]
+      commands:
+        - bash ./ci-utils/validations.sh
