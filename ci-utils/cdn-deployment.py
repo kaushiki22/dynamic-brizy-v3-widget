@@ -10,7 +10,7 @@ def cli(ctx, debug):
 
     commit_hash = os.environ.get('DRONE_COMMIT_SHA')
     branch = os.environ.get('DRONE_COMMIT_BRANCH')           
-    base_branch = os.environ.get('BASE_BRANCH', 'SRE-9250')    
+    base_branch = os.environ.get('BASE_BRANCH', 'main')    
     target_branch = os.environ.get('DRONE_TARGET_BRANCH')    
     repo_name = os.environ.get("DRONE_REPO_NAME")
 
