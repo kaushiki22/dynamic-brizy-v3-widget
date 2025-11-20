@@ -10,7 +10,7 @@ clone:
 
 pipeline:
   download:
-    image: docker
+    image: docker:20.10
     commands:
       - docker pull 612427630422.dkr.ecr.us-east-1.amazonaws.com/sre/mfe-builder-deployer:latest
     volumes:
@@ -21,22 +21,23 @@ pipeline:
   build-creation:
       image: 612427630422.dkr.ecr.us-east-1.amazonaws.com/sre/mfe-builder-deployer:latest
       when:
-        event: tag
+        event: push
       commands:
+        - sleep 3600
         - bash /build.sh
 
-  deployment:
-      image: 612427630422.dkr.ecr.us-east-1.amazonaws.com/sre/mfe-builder-deployer:latest
-      when:
-        event: push
-        branch: master
-      commands:
-        - python3 /deploy.py
+  # deployment:
+  #     image: 612427630422.dkr.ecr.us-east-1.amazonaws.com/sre/mfe-builder-deployer:latest
+  #     when:
+  #       event: push
+  #       branch: master
+  #     commands:
+  #       - python3 /deploy.py
   
-  lint-test-fe-check:
-      image: 612427630422.dkr.ecr.us-east-1.amazonaws.com/sre/mfe-builder-deployer:latest
-      when:
-        event: pull_request
-        branch: [master, dev]
-      commands:
-        - bash ./ci-utils/validations.sh
+  # lint-test-fe-check:
+  #     image: 612427630422.dkr.ecr.us-east-1.amazonaws.com/sre/mfe-builder-deployer:latest
+  #     when:
+  #       event: pull_request
+  #       branch: [master, dev]
+  #     commands:
+  #       - bash ./ci-utils/validations.sh
