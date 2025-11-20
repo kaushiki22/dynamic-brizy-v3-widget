@@ -49,9 +49,11 @@ def cli(ctx, debug):
         '/inbound-ui/html-template/staging/assets/widgets/index.editor.js'
     ]
 
+    build_event = os.environ.get('DRONE_BUILD_EVENT')  # e.g. "push" or "pull_request"
+
     # --- Prod deployment ---
-    if branch == base_branch:
-        click.secho('🚀 Starting deployment for PROD', fg='green')
+    if branch == base_branch and build_event == 'push':
+        click.secho('🚀 Starting deployment for PROD (PR merged to master)', fg='green')
         #execute_command('npm ci', exit_on_error=True)
         #execute_command('npm run build', exit_on_error=True)
 
@@ -70,7 +72,7 @@ def cli(ctx, debug):
         #)
 
     # --- Staging deployment ---
-    elif target_branch == base_branch:
+    elif build_event == 'pull_request' and target_branch == base_branch:
         click.secho('🔄 Starting deployment for STAGING (PR to main)', fg='blue')
         execute_command('npm ci', exit_on_error=True)
         execute_command('npm run build', exit_on_error=True)
