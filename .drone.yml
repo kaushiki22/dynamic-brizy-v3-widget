@@ -21,7 +21,7 @@ pipeline:
   build-creation:
       image: 612427630422.dkr.ecr.us-east-1.amazonaws.com/sre/mfe-builder-deployer:latest
       when:
-        event: push
+        event: [push,pull_request]
       commands:
         - cp -r ./ci-utils/cdn-deployment.py ./
         - cp -r /base.py ./
