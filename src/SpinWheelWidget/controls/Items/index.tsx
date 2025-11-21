@@ -1,7 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import { Button } from "../Button";
 import { Props } from "./types";
-import { getSpinScreenMarginStyle, getSpinScreenPaddingStyle, getSpinScreenBorderWidthStyle } from '../../utils/BoxModalUtils'
 import { wheelSize, wheelPointerConfig, EditorRadicalDistanse } from '../../constant/spinWheelConstant'
 
 export const Items = (props: Props): React.ReactElement => {
@@ -12,7 +11,6 @@ export const Items = (props: Props): React.ReactElement => {
 
   useEffect(() => {
     if (wheelRef.current) {
-      console.log('wheelRef.current.offsetWidth', {wheelRef});
       setRadius(wheelRef.current.offsetWidth / 2);
     }
   }, [items.length, style?.width, style?.height]);
@@ -66,9 +64,9 @@ export const Items = (props: Props): React.ReactElement => {
     <div className="spin-wheel-container" style={{
       position: "relative",
       backgroundColor: extraProps?.['default-bg-color'],
-      ...getSpinScreenMarginStyle(extraProps ?? {}, 'spin-screen'),
-      ...getSpinScreenPaddingStyle(extraProps ?? {}, 'spin-screen'),
-      ...getSpinScreenBorderWidthStyle(extraProps ?? {}, 'spin-screen-border', 'default-border-color'),
+      // ...getSpinScreenMarginStyle(extraProps ?? {}, 'spin-screen'),
+      // ...getSpinScreenPaddingStyle(extraProps ?? {}, 'spin-screen'),
+      // ...getSpinScreenBorderWidthStyle(extraProps ?? {}, 'spin-screen-border', 'default-border-color'),
     }}>
       <div style={{ position: 'relative', margin: '0 auto' }}>
       {/* Wheel */}
@@ -155,8 +153,8 @@ export const Items = (props: Props): React.ReactElement => {
       />
 
         {/* Spin button */}
-        <Button onClick={onSpinStart} disabled={spinning} backgroundColor={typeof extraProps?.['default-spin-btn-color'] === 'string' ? extraProps['default-spin-btn-color'] : undefined} padding={extraProps?.['spin-wheel-box-is-form'] === 'on' ? '0.8rem 0.8rem' : '1.2rem 0.8rem'}>
-          {spinning ? "Spinning..." : extraProps?.['spin-wheel-box-is-form'] === 'on' ? "" : (typeof extraProps?.['default-spin-btn-text'] === 'string' && extraProps['default-spin-btn-text'].trim() !== '' ? extraProps['default-spin-btn-text'] : "Spin")}
+        <Button onClick={onSpinStart} disabled={spinning} backgroundColor={typeof extraProps?.['default-spin-btn-color'] === 'string' ? extraProps['default-spin-btn-color'] : undefined} padding={extraProps?.['spin-wheel-box-is-form'] === 'on' ? '0.8rem 0.8rem' : '1.2rem 0.8rem'} spinButtonTextColor={typeof extraProps?.['default-spin-btn-text-color'] === 'string' ? extraProps['default-spin-btn-text-color'] : undefined} spinButtonFontSize={typeof extraProps?.['default-spin-btn-text-font-size'] === 'number' ? extraProps['default-spin-btn-text-font-size'] : 16}>
+          {extraProps?.['spin-wheel-box-is-form'] === 'on' ? "" : (typeof extraProps?.['default-spin-btn-text'] === 'string' && extraProps['default-spin-btn-text'].trim() !== '' ? extraProps['default-spin-btn-text'] : "")}
         </Button>
         </div>
     </div>

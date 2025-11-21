@@ -25,10 +25,11 @@ export const View = (props: Props): React.ReactElement => {
   const wheelSizeValue = wheelSize[pointerSizeKey] || wheelSize["medium"];
   const radialVal = radicalDistanse[pointerSizeKey] || 0.6;
   return (
-    <div 
+    <div
       id="spinWheelContainer"
-      className="spin-wheel-container" 
+      className="spin-wheel-container"
       data-pointer-position={pointerPositionKey}
+      data-default-spin-btn-text={props?.['default-spin-btn-text']}
       data-spin-wheel-box-is-form={props?.['spin-wheel-box-is-form'] || 'off'}
       data-winning-img-imageImageSrc={props?.['winning-img-imageImageSrc'] || ''}
       data-winning-text1-title={props?.['winning-text1-title'] || 'Congratulations, you won'}
@@ -88,8 +89,8 @@ export const View = (props: Props): React.ReactElement => {
     >
       <div style={{ position: 'relative', margin: '0 auto' }}>
         {/* Wheel */}
-        <div 
-          className="spin-wheel" 
+        <div
+          className="spin-wheel"
           style={{
             aspectRatio: "1 / 1",
             borderRadius: "50%",
@@ -107,7 +108,7 @@ export const View = (props: Props): React.ReactElement => {
             const imageSize = wheelRadius / 4;
             // Responsive font size based on wheel size
             const fontSize = item.fontSize || Math.max(10, wheelRadius / 15);
-            
+
             return (
               <div
                 key={index}
@@ -179,13 +180,13 @@ export const View = (props: Props): React.ReactElement => {
         />
 
         {/* Spin button */}
-        <button 
+        <button
           className="spin-button"
           style={{
             padding: `${props?.['spin-wheel-box-is-form'] === 'on' ? '0.8rem 0.8rem' : '1.2rem 0.8rem'}`,
-            fontSize: "1rem",
+            fontSize: `${props?.['default-spin-btn-text-font-size'] || 16}px`,
             fontWeight: "bold",
-            color: "#fff",
+            color: props?.['default-spin-btn-text-color'] || "#fff",
             backgroundColor: props?.['default-spin-btn-color'] || "#ef4444",
             border: "none",
             borderRadius: "2rem",
@@ -197,10 +198,9 @@ export const View = (props: Props): React.ReactElement => {
             transform: "translate(-50%, -50%)",
           }}
         >
-          {props?.['spin-wheel-box-is-form'] === 'on' ? "" : props?.['default-spin-btn-text'] || "Spin"}
+          {props?.['spin-wheel-box-is-form'] === 'on' ? "" : props?.['default-spin-btn-text'] || ""}
         </button>
       </div>
-
       {/* Result display area */}
       <div className="result" style={{ display: "none", marginTop: "1rem" }}></div>
     </div>

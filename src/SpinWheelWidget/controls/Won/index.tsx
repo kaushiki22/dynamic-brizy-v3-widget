@@ -47,7 +47,8 @@ export const Won = (props: Props): ReactElement => {
           ...getSpinScreenMarginStyle(extraProps ?? {}, 'winning-text1'),
           ...getSpinScreenPaddingStyle(extraProps ?? {}, 'winning-text1'),
           ...getSpinScreenBorderWidthStyle(extraProps ?? {}, 'winning-text1-border', 'winning-text1-bordercolor'),
-          ...getSpinScreenBorderRadiusStyle(extraProps ?? {}, 'winning-text1-border-radius')
+          ...getSpinScreenBorderRadiusStyle(extraProps ?? {}, 'winning-text1-border-radius'),
+          maxWidth: '300px',
         }}>
           {extraProps?.['winning-text1-title']}
         </p>
@@ -66,7 +67,7 @@ export const Won = (props: Props): ReactElement => {
         borderRadius: '8px',
         padding: '12px',
         display: 'flex',
-        justifyContent: extraProps?.['winning-coupon-box-give-icon'] !== 'on' ? 'end' : 'space-between',
+        justifyContent: extraProps?.['winning-coupon-box-give-icon'] !== 'on' ? 'center' : 'space-between',
         alignItems: 'center',
         cursor: 'pointer',
         backgroundColor:`${extraProps?.['winning-coupon-box-color']}`,
@@ -92,7 +93,7 @@ export const Won = (props: Props): ReactElement => {
           fontSize: `${extraProps?.['winning-coupon-box-fontsize']}px`,
           letterSpacing: '1px',
           margin: 0,
-          marginRight: '40px'
+          marginRight: extraProps?.['winning-coupon-box-give-icon'] === 'on' ? '40px' : '0px'
         }}
         >
           {couponCode || 'KIWI_100'}
@@ -111,7 +112,8 @@ export const Won = (props: Props): ReactElement => {
         ...getSpinScreenMarginStyle(extraProps ?? {}, 'winning-text2'),
         ...getSpinScreenPaddingStyle(extraProps ?? {}, 'winning-text2'),
         ...getSpinScreenBorderWidthStyle(extraProps ?? {}, 'winning-text2-border', 'winning-text2-bordercolor'),
-        ...getSpinScreenBorderRadiusStyle(extraProps ?? {}, 'winning-text2-border-radius')
+        ...getSpinScreenBorderRadiusStyle(extraProps ?? {}, 'winning-text2-border-radius'),
+        maxWidth: '300px',
       }}>
         {extraProps?.['winning-text2-title']}
       </p>

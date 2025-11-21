@@ -14,7 +14,6 @@ export const getToolbar: GetToolbar = ({ t }) => {
             icon: "nc-styling-all",
             title: "Spin",
           },
-          devices: "desktop", // only desktop
           position: 90,
           options: [
             {

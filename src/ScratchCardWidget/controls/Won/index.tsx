@@ -45,7 +45,8 @@ export const Won = (props: Props): ReactElement => {
           ...getSpinScreenBorderWidthStyle(extraProps ?? {}, 'scratch-card-winning-text1-border', 'scratch-card-winning-text1-bordercolor'),
           ...getSpinScreenPaddingStyle(extraProps ?? {}, 'scratch-card-winning-text1'),
           ...getSpinScreenBorderRadiusStyle(extraProps ?? {}, 'scratch-card-winning-text1-border-radius' ),
-          ...getSpinScreenMarginStyle(extraProps ?? {}, 'scratch-card-winning-text1')
+          ...getSpinScreenMarginStyle(extraProps ?? {}, 'scratch-card-winning-text1'),
+          maxWidth: '300px',
         }}>
           {extraProps?.['scratch-card-winning-text1-title']}
           <p style={{

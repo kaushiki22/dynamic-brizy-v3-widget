@@ -6,4 +6,6 @@ export interface Props {
   disabled?: boolean;
   backgroundColor?: string;
   padding?: string;
+  spinButtonTextColor?: string;
+  spinButtonFontSize?: number;
 }

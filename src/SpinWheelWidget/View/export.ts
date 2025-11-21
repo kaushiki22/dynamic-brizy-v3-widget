@@ -1,13 +1,14 @@
 
+
 // Global function to trigger spin wheel programmatically
 (window as any).triggerSpinWheel = (containerId?: string) => {
-    const spinWheels = containerId 
-        ? [document.getElementById(containerId)] 
+    const spinWheels = containerId
+        ? [document.getElementById(containerId)]
         : document.querySelectorAll<HTMLDivElement>(".spin-wheel-container");
-    
+
     spinWheels.forEach((spinWheel) => {
         if (!spinWheel) return;
-        
+
         const spinButton = spinWheel.querySelector<HTMLButtonElement>(".spin-button");
         const wheel = spinWheel.querySelector<HTMLDivElement>(".spin-wheel");
         const resultDisplay = spinWheel.querySelector<HTMLDivElement>(".result");
@@ -35,6 +36,7 @@ const init = () => {
         const resultDisplay = spinWheel.querySelector<HTMLDivElement>(".result");
         const wheelItems = spinWheel.querySelectorAll<HTMLDivElement>(".wheel-item");
         const wheelContainer = spinWheel.querySelector<HTMLDivElement>(".spin-wheel");
+        const defaultSpinBtnText = spinWheel.dataset.defaultSpinBtnText;
 
         if (!spinButton || !wheel || !resultDisplay || !wheelContainer) {
             console.error("One or more elements not found");
@@ -52,7 +54,7 @@ const init = () => {
 
             spinning = true;
             spinButton.disabled = true;
-            spinButton.textContent = "Spinning...";
+            spinButton.textContent = defaultSpinBtnText || "";
 
             // Hide any existing result
             resultDisplay.style.display = "none";
@@ -154,7 +156,7 @@ const init = () => {
                 const winningCouponBoxGiveIconColor = spinWheel.dataset.winningCouponBoxGiveIconColor || '#333';
                 const losingText1Title = spinWheel.dataset.losingText1Title || 'Sorry, You didn\'t win anything';
                 const losingText1Fontcolor = spinWheel.dataset.losingText1Fontcolor || '#dc2626';
-                const losingImgSrc = spinWheel.dataset.losingImgImageImageSrc || '';
+                const losingImgSrc = spinWheel.dataset.losingImgImageimagesrc || '';
                 const losingText1Fontsize = spinWheel.dataset.losingText1Fontsize || '22';
                 const losingText1BgColor = spinWheel.dataset.losingText1BgColor || 'transparent';
                 const losingImgMargin = spinWheel.dataset.losingImgMargin || '';
@@ -181,7 +183,7 @@ const init = () => {
                 const winningCouponBoxBorderRadius = spinWheel.dataset.winningCouponBoxBorderRadius || '';
                 const winningText1BorderRadius = spinWheel.dataset.winningText1BorderRadius || '';
                 const winningText2BorderRadius = spinWheel.dataset.winningText2BorderRadius || '';
-
+                console.log("check value of defaultSpinBtnText", { losingImgSrc, dataSet: spinWheel.dataset });
                 // Hide the entire wheel section including button and pointer when showing result
                 const wheelSection = spinWheel.querySelector<HTMLElement>('div[style*="position: relative"]');
                 if (wheelSection) {
@@ -194,9 +196,10 @@ const init = () => {
                 if (spinButtonElement) spinButtonElement.style.display = "none";
                 if (pointerElement) pointerElement.style.display = "none";
 
-                // Remove background-color and box-shadow from spin-wheel-container
+                // Remove background-color, box-shadow, and border from spin-wheel-container
                 spinWheel.style.backgroundColor = "transparent";
                 spinWheel.style.boxShadow = "none";
+                spinWheel.style.border = "none";
 
                 // 8️⃣ Win / Lose screen - exact styles from components
                 if (landedItem.loseOption === "on") {
@@ -229,6 +232,7 @@ const init = () => {
                             color: ${losingText1Fontcolor};
                             background-color: ${losingText1BgColor};
                             margin: 10px 0;
+                            width: 228px;
                             ${losingText1Margin};
                             ${losingText1Padding};
                             ${losingText1Border};
@@ -314,7 +318,7 @@ const init = () => {
                             border-radius: 8px;
                             padding: 12px;
                             display: flex;
-                            justify-content: ${winningCouponBoxGiveIcon !== 'on' ? 'end' : 'space-between'};
+                            justify-content: ${winningCouponBoxGiveIcon !== 'on' ? 'center' : 'space-between'};
                             align-items: center;
                             cursor: pointer;
                             background-color: ${winningCouponBoxColor};
@@ -333,7 +337,7 @@ const init = () => {
                                 font-size: ${winningCouponBoxFontsize}px;
                                 letter-spacing: 1px;
                                 margin: 0;
-                                margin-right: 40px;
+                                margin-right: ${winningCouponBoxGiveIcon === 'on' ? '40px' : '0px'};
                             ">
                                 ${landedItem.couponCode}
                             </span>
@@ -382,6 +386,6 @@ if (document.readyState === "complete") {
     init();
 } else {
     document.addEventListener("DOMContentLoaded", init, false);
-} 
+}
 
-export {};
+export { };

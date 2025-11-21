@@ -43,7 +43,8 @@ export const LosingScreen = (props: Props): ReactElement => {
                 ...getSpinScreenBorderWidthStyle(extraProps ?? {}, 'scratch-card-losing-text1-border', 'scratch-card-losing-text1-bordercolor'),
                 ...getSpinScreenPaddingStyle(extraProps ?? {}, 'scratch-card-losing-text1'),
                 ...getSpinScreenBorderRadiusStyle(extraProps ?? {}, 'scratch-card-losing-text1-border-radius'),
-                ...getSpinScreenMarginStyle(extraProps ?? {}, 'scratch-card-losing-text1')
+                ...getSpinScreenMarginStyle(extraProps ?? {}, 'scratch-card-losing-text1'),
+                maxWidth: '300px',
             }}>
                 {extraProps?.['scratch-card-losing-text1-title']}
             </h2>

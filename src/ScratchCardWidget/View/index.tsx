@@ -14,7 +14,7 @@ const styleToString = (style: Record<string, any>): string => {
 
 export const View = (props: Types): string => {
   const items = getItems(props);
-  
+
   const hasWinLose = items.some(item => item.loseOption === 'on');
   const displayText = items.length > 0 ? (hasWinLose ? 'Win or Lose' : 'Prize') : 'No items configured';
   const emoji = items.length > 0 ? '🎁' : '🎫';
@@ -22,7 +22,7 @@ export const View = (props: Types): string => {
 
   const containerStyle = {
     position: "relative",
-    backgroundColor:'transparent',
+    backgroundColor: 'transparent',
     padding: '2rem',
     borderRadius: '1rem',
     textAlign: 'center',
@@ -47,11 +47,11 @@ export const View = (props: Types): string => {
     overflow: 'hidden',
     zIndex: '0'
   };
-  
+
   const defaultPadding = Object.entries(getSpinScreenPaddingStyle(props ?? {}, 'scratch-card-default'))
     .map(([key, value]) => `${key.replace(/([A-Z])/g, '-$1').toLowerCase()}: ${value}`)
     .join('; ');
-  
+
 
   const contentStyle = {
     width: '100%',

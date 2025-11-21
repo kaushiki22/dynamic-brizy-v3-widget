@@ -1,6 +1,6 @@
-import { ReactElement } from "react";
+import React, { ReactElement } from "react";
 import { Props } from "./types";
-import { getSpinScreenMarginStyle, getSpinScreenPaddingStyle, getSpinScreenBorderWidthStyle, getSpinScreenBorderRadiusStyle } from '../../utils/BoxModalUtils'
+import { getSpinScreenMarginStyle, getSpinScreenPaddingStyle, getSpinScreenBorderWidthStyle, getSpinScreenBorderRadiusStyle } from '../../utils/BoxModalUtils';
 
 export const LosingScreen = (props: Props): ReactElement => {
     const { message, extraProps } = props;
@@ -44,7 +44,8 @@ export const LosingScreen = (props: Props): ReactElement => {
                 ...getSpinScreenMarginStyle(extraProps ?? {}, 'losing-text1'),
                 ...getSpinScreenPaddingStyle(extraProps ?? {}, 'losing-text1'),
                 ...getSpinScreenBorderWidthStyle(extraProps ?? {}, 'losing-text1-border', 'losing-text1-bordercolor'),
-                ...getSpinScreenBorderRadiusStyle(extraProps ?? {}, 'losing-text1-border-radius')
+                ...getSpinScreenBorderRadiusStyle(extraProps ?? {}, 'losing-text1-border-radius'),
+                maxWidth: '300px',
             }}>
                 {message || defaultMessage}
             </h2>

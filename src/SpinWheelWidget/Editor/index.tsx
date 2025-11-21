@@ -111,7 +111,7 @@ export const Editor = (props: Props): React.ReactElement => {
     [rotation, spinning]
   );
   return (
-    <Wrapper>
+    <Wrapper extraProps={props}>
       {activeTab === "default" && screenState === "wheel" && (
         <Items
           items={items}

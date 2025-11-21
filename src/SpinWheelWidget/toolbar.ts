@@ -13,7 +13,8 @@ export const getToolbar: GetToolbar = ({ t }) => {
             config: {
               icon: "nc-uncheck",
               title: "Spin",
-            },
+           },
+           position: 90,
             options: [
               {
                 id: "grid-control",
@@ -93,7 +94,7 @@ export const getToolbar: GetToolbar = ({ t }) => {
                           },
                           {
                             id: "looseOption",
-                            label: "Loose option",
+                            label: "Lose option",
                             type: "switch",
                           },
                         ],
@@ -208,6 +209,23 @@ export const getToolbar: GetToolbar = ({ t }) => {
                             value: "SPIN"
                           }
                         },
+                        {
+                          id: "default-spin-btn-text-color",
+                          type: "inputText",
+                          label: "Spin button text color",
+                          default: {
+                            value: "#fff"
+                          }
+                        },
+                        {
+                          id: "default-spin-btn-text-font-size",
+                          type: "number",
+                          label: "Spin button font size",
+                          default: {
+                            value: 16
+                          }
+                        },
+                        
                         { id: "spin-screen-margin", label: "Margin", type: "margin" },
                         {
                           id: "spin-screen-padding", label: "Padding", type: "padding",
