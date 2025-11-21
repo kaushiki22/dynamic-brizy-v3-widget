@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
 import { Props } from "./types";
 import { getSpinScreenBorderWidthStyle, getSpinScreenPaddingStyle, getSpinScreenMarginStyle, getSpinScreenBorderRadiusStyle } from "../../../SpinWheelWidget/utils/BoxModalUtils";
+import { getImageKitUrl } from "../../../SpinWheelWidget/utils/ImageKitUtil";
 
 export const Won = (props: Props): ReactElement => {
   const { data, extraProps } = props;
@@ -24,7 +25,7 @@ export const Won = (props: Props): ReactElement => {
         <img
           src={
             extraProps && typeof extraProps['scratch-card-winning-img-imageImageSrc'] === 'string' && extraProps['scratch-card-winning-img-imageImageSrc']
-              ? `https://image-staging-ap1.moengage.com/${extraProps['scratch-card-winning-img-imageImageSrc']}`
+              ? `${getImageKitUrl()}/${extraProps['scratch-card-winning-img-imageImageSrc']}`
               : "https://image-staging-ap1.moengage.com/zaininappmoengage/20250813082208174819U7VY3E3667fd08188e527bc564e165889218d63e9ddb29pngzaininappmoengage.png"
           } // A festive gift box icon
           alt="Gift box prize"

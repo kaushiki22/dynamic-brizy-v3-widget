@@ -1,3 +1,4 @@
+import { getImageKitUrl } from "../../SpinWheelWidget/utils/ImageKitUtil";
 
 // Initialize scratch card functionality
 const init = () => {
@@ -30,7 +31,7 @@ const init = () => {
 
       // Load and draw the scratch image (for both form mode and normal mode)
       const imageUrl = scratchImage 
-        ? `https://image-staging-ap1.moengage.com/${scratchImage}`
+        ? `${getImageKitUrl()}/${scratchImage}`
         : 'https://image-staging-ap1.moengage.com/zaininappmoengage/20250821090931604372S5VUFCcheck1pngzaininappmoengage.png';
 
       const img = new Image();
@@ -169,7 +170,7 @@ const init = () => {
 
           if (selectedWinner.loseOption === "on") {
             const losingImgSrc = scratchCard.dataset.scratchCardLosingImgImageimagesrc 
-              ? `https://image-staging-ap1.moengage.com/${scratchCard.dataset.scratchCardLosingImgImageimagesrc}` 
+              ? `${getImageKitUrl()}/${scratchCard.dataset.scratchCardLosingImgImageimagesrc}` 
               : 'https://image-staging-ap1.moengage.com/zaininappmoengage/20250813082112920973515LXRVectorpngzaininappmoengage.png';
 
             const losingImgMargin = scratchCard.dataset.scratchCardLosingImgMargin || '';
@@ -190,7 +191,7 @@ const init = () => {
                 `;
             } else {
             const winImageSrc = scratchCard.dataset.scratchCardWinningImgImageimagesrc 
-              ? `https://image-staging-ap1.moengage.com/${scratchCard.dataset.scratchCardWinningImgImageimagesrc}` 
+              ? `${getImageKitUrl()}/${scratchCard.dataset.scratchCardWinningImgImageimagesrc}` 
               : 'https://image-staging-ap1.moengage.com/zaininappmoengage/20250813082208174819U7VY3E3667fd08188e527bc564e165889218d63e9ddb29pngzaininappmoengage.png';
 
             const winningImgMargin = scratchCard.dataset.scratchCardWinningImgMargin || '';
@@ -222,7 +223,7 @@ const init = () => {
                   </p>
                   </div>
                 </div>
-                <div onclick="MoeOsm.copyText('.copy-code');navigator.clipboard.writeText('${selectedWinner.couponCode}');MoeOsm.trackClick('scratch-copy-code');" style="display: flex; justify-content: ${showCopyIcon ? 'space-between' : 'center'}; align-items: center; cursor: pointer; background: ${scratchCard.dataset.scratchCardWinningCouponBoxColor}; ${winningCouponBoxMargin} ;${winningCouponBoxPadding}; ${winningCouponBoxBorder}; ${winningCouponBoxBorderRadius};width: ${couponBoxSize};">
+                <div onclick="MoeOsm.copyText('.copy-code');navigator.clipboard.writeText('${selectedWinner.couponCode}');MoeOsm.trackClick('spin-copy-code');MoeOsm.trackEvent(campaignId,'MOE_RESPONSE_SUBMITTED',{couponCode: '${selectedWinner.couponCode}'},{},{},false,true,);" style="display: flex; justify-content: ${showCopyIcon ? 'space-between' : 'center'}; align-items: center; cursor: pointer; background: ${scratchCard.dataset.scratchCardWinningCouponBoxColor}; ${winningCouponBoxMargin} ;${winningCouponBoxPadding}; ${winningCouponBoxBorder}; ${winningCouponBoxBorderRadius};width: ${couponBoxSize};">
                   <span class="copy-code" style="color: ${scratchCard.dataset.scratchCardWinningCouponBoxFontcolor || '#333'}; font-weight: bold; font-size: ${scratchCard.dataset.scratchCardWinningCouponBoxFontsize || '16'}px; letter-spacing: 1px; margin: 0; margin-right: ${showCopyIcon ? '40px' : '0'};">
                     ${selectedWinner.couponCode}
                             </span>
@@ -353,7 +354,7 @@ const init = () => {
     // Get the scratch image
     const scratchImage = scratchCard.getAttribute("data-scratch-card-image") || '';
     const imageUrl = scratchImage 
-      ? `https://image-staging-ap1.moengage.com/${scratchImage}`
+      ? `${getImageKitUrl()}/${scratchImage}`
       : 'https://image-staging-ap1.moengage.com/zaininappmoengage/20250821090931604372S5VUFCcheck1pngzaininappmoengage.png';
 
     // Get background color
@@ -507,7 +508,7 @@ const init = () => {
 
       if (selectedWinner.loseOption === "on") {
         const losingImgSrc = scratchCard.dataset.scratchCardLosingImgImageimagesrc 
-          ? `https://image-staging-ap1.moengage.com/${scratchCard.dataset.scratchCardLosingImgImageimagesrc}` 
+          ? `${getImageKitUrl()}/${scratchCard.dataset.scratchCardLosingImgImageimagesrc}` 
           : 'https://image-staging-ap1.moengage.com/zaininappmoengage/20250813082112920973515LXRVectorpngzaininappmoengage.png';
 
         const losingImgMargin = scratchCard.dataset.scratchCardLosingImgMargin || '';
@@ -528,7 +529,7 @@ const init = () => {
         `;
       } else {
         const winImageSrc = scratchCard.dataset.scratchCardWinningImgImageimagesrc 
-          ? `https://image-staging-ap1.moengage.com/${scratchCard.dataset.scratchCardWinningImgImageimagesrc}` 
+          ? `${getImageKitUrl()}/${scratchCard.dataset.scratchCardWinningImgImageimagesrc}` 
           : 'https://image-staging-ap1.moengage.com/zaininappmoengage/20250813082208174819U7VY3E3667fd08188e527bc564e165889218d63e9ddb29pngzaininappmoengage.png';
 
         const winningImgMargin = scratchCard.dataset.scratchCardWinningImgMargin || '';
@@ -560,7 +561,7 @@ const init = () => {
                 </p>
               </div>
             </div>
-            <div onclick="MoeOsm.copyText('.copy-code');navigator.clipboard.writeText('${selectedWinner.couponCode}');MoeOsm.trackClick('scratch-copy-code');" style="display: flex; justify-content: ${showCopyIcon ? 'space-between' : 'center'}; align-items: center; cursor: pointer; background: ${scratchCard.dataset.scratchCardWinningCouponBoxColor}; ${winningCouponBoxMargin} ;${winningCouponBoxPadding}; ${winningCouponBoxBorder}; ${winningCouponBoxBorderRadius};width: ${couponBoxSize};">
+            <div onclick="MoeOsm.copyText('.copy-code');navigator.clipboard.writeText('${selectedWinner.couponCode}');MoeOsm.trackClick('spin-copy-code')MoeOsm.trackEvent(campaignId,'MOE_RESPONSE_SUBMITTED',{couponCode: '${selectedWinner.couponCode}'},{},{},false,true,);" style="display: flex; justify-content: ${showCopyIcon ? 'space-between' : 'center'}; align-items: center; cursor: pointer; background: ${scratchCard.dataset.scratchCardWinningCouponBoxColor}; ${winningCouponBoxMargin} ;${winningCouponBoxPadding}; ${winningCouponBoxBorder}; ${winningCouponBoxBorderRadius};width: ${couponBoxSize};">
               <span class="copy-code" style="color: ${scratchCard.dataset.scratchCardWinningCouponBoxFontcolor || '#333'}; font-weight: bold; font-size: ${scratchCard.dataset.scratchCardWinningCouponBoxFontsize || '16'}px; letter-spacing: 1px; margin: 0; margin-right: ${showCopyIcon ? '40px' : '0'};">
                 ${selectedWinner.couponCode}
               </span>

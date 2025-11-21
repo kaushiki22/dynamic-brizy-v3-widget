@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import { Button } from "../Button";
 import { Props } from "./types";
 import { wheelSize, wheelPointerConfig, EditorRadicalDistanse } from '../../constant/spinWheelConstant'
+import { getImageKitUrl } from "../../utils/ImageKitUtil";
 
 export const Items = (props: Props): React.ReactElement => {
   const { items, spinning, onSpinStart, style, extraProps  } = props;
@@ -113,7 +114,7 @@ export const Items = (props: Props): React.ReactElement => {
                   {item.image && (
                     <div>
                       <img
-                        src={`https://image-staging-ap1.moengage.com/${item.image}`}
+                      src={`${getImageKitUrl()}/${item.image}`}
                         alt={item.title}
                         style={{
                           width: imageSize,

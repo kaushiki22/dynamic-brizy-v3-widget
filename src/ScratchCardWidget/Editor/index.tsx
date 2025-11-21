@@ -5,6 +5,7 @@ import { LosingScreen } from "../controls/Lose";
 import { Types } from "../types";
 import { getSpinScreenMarginStyle, getSpinScreenPaddingStyle } from '../../SpinWheelWidget/utils/BoxModalUtils'
 import "../index.scss";
+import { getImageKitUrl } from "../../SpinWheelWidget/utils/ImageKitUtil";
 
 export const Editor: React.FC<Types> = (props) => {
   const items = getItems(props);
@@ -39,7 +40,7 @@ export const Editor: React.FC<Types> = (props) => {
 
   // Separate effect for image loading - only depends on image source, not style props
   const imageSrc = props?.["scratch-card-default-imageImageSrc"]
-    ? `https://image-staging-ap1.moengage.com/${props["scratch-card-default-imageImageSrc"]}`
+    ? `${getImageKitUrl()}/${props["scratch-card-default-imageImageSrc"]}`
     : "https://image-staging-ap1.moengage.com/zaininappmoengage/20250821090931604372S5VUFCcheck1pngzaininappmoengage.png";
 
   const lastImageSrcRef = useRef<string>("");
@@ -196,7 +197,7 @@ export const Editor: React.FC<Types> = (props) => {
       
       const percent = (scratchedPixels / totalPixels) * 100;
       // If 40% is scratched, reveal the result
-      if (percent > 0.5 && !revealed) {
+      if (percent > 4 && !revealed) {
         revealResult();
       }
     };
@@ -280,7 +281,7 @@ export const Editor: React.FC<Types> = (props) => {
       <div className="preview-card">
         {/* Show win/lose screens based on tab or scratch detection */}
         {(revealed || screenState === "win" || screenState === "lose") ? (
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '400px', width: '100%' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%' }}>
             {/* Tab-based display takes priority, then scratch detection */}
             {screenState === "win" ? (
               <Won data={resultItem} extraProps={props} />

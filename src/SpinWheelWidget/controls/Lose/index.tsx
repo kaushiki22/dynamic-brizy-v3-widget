@@ -1,6 +1,7 @@
 import React, { ReactElement } from "react";
 import { Props } from "./types";
 import { getSpinScreenMarginStyle, getSpinScreenPaddingStyle, getSpinScreenBorderWidthStyle, getSpinScreenBorderRadiusStyle } from '../../utils/BoxModalUtils';
+import { getImageKitUrl } from "../../utils/ImageKitUtil";
 
 export const LosingScreen = (props: Props): ReactElement => {
     const { message, extraProps } = props;
@@ -21,7 +22,7 @@ export const LosingScreen = (props: Props): ReactElement => {
             <img
                 src={
                     extraProps && typeof extraProps['losing-img-imageImageSrc'] === 'string' && extraProps['losing-img-imageImageSrc']
-                        ? `https://image-staging-ap1.moengage.com/${extraProps['losing-img-imageImageSrc']}`
+                        ? `${getImageKitUrl()}/${extraProps['losing-img-imageImageSrc']}`
                         : "https://campaign-assets-pp.moengage.com/inbound/inapp/html_inapp/campaigns/zain_inapp/17522326677815583_r7jgi7/17522337977649086_mrli8k/assets/1752234344573518_msc/loose-icon.png"
                 }// An empty, sad box icon
                 alt="Empty box"

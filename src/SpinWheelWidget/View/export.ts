@@ -1,3 +1,4 @@
+import { getImageKitUrl } from "../utils/ImageKitUtil";
 
 
 // Global function to trigger spin wheel programmatically
@@ -204,7 +205,7 @@ const init = () => {
                 // 8️⃣ Win / Lose screen - exact styles from components
                 if (landedItem.loseOption === "on") {
                     // Show lose screen with exact LosingScreen component styles
-                    const losingImageSrcLink = losingImgSrc ? `https://image-staging-ap1.moengage.com/${losingImgSrc}` : "https://campaign-assets-pp.moengage.com/inbound/inapp/html_inapp/campaigns/zain_inapp/17522326677815583_r7jgi7/17522337977649086_mrli8k/assets/1752234344573518_msc/loose-icon.png";
+                    const losingImageSrcLink = losingImgSrc ? `${getImageKitUrl()}/${losingImgSrc}` : "https://campaign-assets-pp.moengage.com/inbound/inapp/html_inapp/campaigns/zain_inapp/17522326677815583_r7jgi7/17522337977649086_mrli8k/assets/1752234344573518_msc/loose-icon.png";
 
                     resultDisplay.style.display = "block";
                     resultDisplay.innerHTML = `
@@ -246,7 +247,7 @@ const init = () => {
                     // Show win screen with exact Won component structure and styling
                     const couponBoxSizeMap = { small: '180px', medium: '200px', large: '220px' };
                     const couponBoxWidth = couponBoxSizeMap[winningCouponboxSize as keyof typeof couponBoxSizeMap] || '200px';
-                    const winningImageSrcLink = winningImgSrc ? `https://image-staging-ap1.moengage.com/${winningImgSrc}` : "https://cdn.moengage.com/inapp/html-template5/assets/img/win-icon.png";
+                    const winningImageSrcLink = winningImgSrc ? `${getImageKitUrl()}/${winningImgSrc}` : "https://cdn.moengage.com/inapp/html-template5/assets/img/win-icon.png";
 
                     // CSS strings are already formatted, use them directly
                     console.log('Style values:', {
@@ -330,7 +331,7 @@ const init = () => {
                             ${winningCouponBoxPadding};
                             ${winningCouponBoxBorder};
                             ${winningCouponBoxBorderRadius};
-                        " onclick="MoeOsm.copyText('.copy-code');navigator.clipboard.writeText('${landedItem.couponCode}');MoeOsm.trackClick('spin-copy-code');">
+                        " onclick="MoeOsm.copyText('.copy-code');navigator.clipboard.writeText('${landedItem.couponCode}');MoeOsm.trackClick('spin-copy-code')MoeOsm.trackEvent(campaignId,'MOE_RESPONSE_SUBMITTED',{couponCode: '${landedItem.couponCode}'},{},{},false,true,);">
                             <span class="copy-code" style="
                                 color: ${winningCouponBoxFontcolor};
                                 font-weight: bold;

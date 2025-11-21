@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
 import { Props } from "./types";
 import { getSpinScreenBorderWidthStyle, getSpinScreenPaddingStyle, getSpinScreenMarginStyle, getSpinScreenBorderRadiusStyle } from "../../../SpinWheelWidget/utils/BoxModalUtils";
+import { getImageKitUrl } from "../../../SpinWheelWidget/utils/ImageKitUtil";
 
 export const LosingScreen = (props: Props): ReactElement => {
     const { extraProps } = props;
@@ -20,7 +21,7 @@ export const LosingScreen = (props: Props): ReactElement => {
             <img
                 src={
                     extraProps && typeof extraProps['scratch-card-losing-img-imageImageSrc'] === 'string' && extraProps['scratch-card-losing-img-imageImageSrc']
-                        ? `https://image-staging-ap1.moengage.com/${extraProps['scratch-card-losing-img-imageImageSrc']}`
+                        ? `${getImageKitUrl()}/${extraProps['scratch-card-losing-img-imageImageSrc']}`
                         : "https://image-staging-ap1.moengage.com/zaininappmoengage/20250813082112920973515LXRVectorpngzaininappmoengage.png"
                 }// An empty, sad box icon
                 alt="Empty box"

@@ -3,6 +3,7 @@ import { Props } from "../types";
 import { getItems } from "../utils/getItems";
 import { wheelSize, wheelPointerConfig, radicalDistanse } from '../constant/spinWheelConstant';
 import { getSpinScreenMarginStyle, getSpinScreenPaddingStyle, getSpinScreenBorderWidthStyle, getSpinScreenBorderRadiusStyle } from '../utils/BoxModalUtils';
+import { getImageKitUrl } from "../utils/ImageKitUtil";
 
 export const View = (props: Props): React.ReactElement => {
   const items = getItems(props);
@@ -145,7 +146,7 @@ export const View = (props: Props): React.ReactElement => {
                 {item.image && (
                   <div>
                     <img
-                      src={`https://image-staging-ap1.moengage.com/${item.image}`}
+                      src={`${getImageKitUrl()}/${item.image}`}
                       alt={item.title}
                       style={{
                         width: imageSize,

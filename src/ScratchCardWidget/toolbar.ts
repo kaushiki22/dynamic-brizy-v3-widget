@@ -66,7 +66,7 @@ export const getToolbar: GetToolbar = ({ t }) => {
                         },
                         {
                           id: 'looseOption',
-                          label: t('Loose option'),
+                          label: t('Lose option'),
                           type: 'switch',
                         }
                       ],

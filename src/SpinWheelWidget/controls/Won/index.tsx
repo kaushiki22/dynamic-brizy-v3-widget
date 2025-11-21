@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
 import { Props } from "./types";
 import { getSpinScreenMarginStyle, getSpinScreenPaddingStyle, getSpinScreenBorderWidthStyle, getSpinScreenBorderRadiusStyle } from '../../utils/BoxModalUtils'
+import { getImageKitUrl } from "../../utils/ImageKitUtil";
 
 export const Won = (props: Props): ReactElement => {
   const { data, extraProps } = props;
@@ -26,7 +27,7 @@ export const Won = (props: Props): ReactElement => {
         <img
           src={
             extraProps && typeof extraProps['winning-img-imageImageSrc'] === 'string' && extraProps['winning-img-imageImageSrc']
-              ? `https://image-staging-ap1.moengage.com/${extraProps['winning-img-imageImageSrc']}`
+              ? `${getImageKitUrl()}/${extraProps['winning-img-imageImageSrc']}`
               : "https://cdn.moengage.com/inapp/html-template5/assets/img/win-icon.png"
           } // A festive gift box icon
           alt="Gift box prize"
